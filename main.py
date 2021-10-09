@@ -1,34 +1,37 @@
-# main
+__author__ = "Hunter Boyd"
+__email__ = "hjboyd@email.sc.edu"
+__version__ = 1.0
 
-import numpy as np
-import cv2 as cv
-import time
-# OPENCV IS --- BLUE, GREEN, RED --- (BGR)
 """
-the image is 860 x 679 pixels (679 rows x 860 columns)
-need to loop through about ~600k pixels x 3 channels = ~1.8 million ints
+main.py is the implementation of my submission for CSCI 550 project 1.
+All of the methods used to calculate the area, along with explanations, are in calculatearea.py.
+Both calculatearea.py and PartyRockFire.jpeg must be in the same directory as this file.
+This file provides a brief overview of the functions I created in AreaEstimator in order to estimate and
+visualize the area of contiguous, semi-polygonal shapes.
+
+This project depends on numpy and opencv-python, which can be installed via pip.
+A README has been included with some basic setup instructions.
+A backup_script.py has been included in case it must be run as a single file, although it lacks visual features.
 """
 
-prf = cv.imread('PartyRockFire.jpeg', 1)
-
-
-def display(img):
-    """function to show the image"""
-    cv.imshow('Party Rock Fire', img)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
-
+from calculatearea import AreaEstimator
 
 if __name__ == "__main__":
 
-    # set range for "red"
-    redlo = np.array([0, 0, 118], np.uint8)
-    redhi = np.array([100, 100, 255], np.uint8)
+    # Create an instance of AreaEstimator
+    area_estimator = AreaEstimator(filename='PartyRockFire.jpeg',  # name of the image in the directory
+                                   feet_per_pixel=8188/215,  # the conversion ration from pixels to feet
+                                   color_range=((0, 0, 118), (100, 100, 255)),  # dark to light red BGR tuples
+                                   area_color=(147, 20, 255))  # BGR pink
+    # The class has default values, so this is equivalent to:
+    # area_estimator = AreaEstimator()
 
-    # get red pixels
-    red = cv.inRange(prf, redlo, redhi)
+    # Calculate the area in square feet, then print the value rounded to 3 significant figures
+    A = area_estimator.get_area()
+    # You can also get the area in pixels
+    # A == A_px * area_estimator.px_size; True
+    A_px = area_estimator.get_area(return_pixels=True)
+    print(f'\nThe area of the Party Rock Fire is approximately {round(A, -6)} square feet (or {A_px} pixels)')
 
-    # loop
-    print((np.where(red > 0)))
-
-    # display(red[red >= 0])
+    # display the images
+    area_estimator.show_images()
