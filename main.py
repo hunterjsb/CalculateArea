@@ -18,18 +18,17 @@ from calculatearea import AreaEstimator
 
 if __name__ == "__main__":
 
-    # Create an instance of AreaEstimator
-    area_estimator = AreaEstimator(filename='PartyRockFire.jpeg',  # name of the image in the directory
-                                   feet_per_pixel=8188/215,  # the conversion ration from pixels to feet
-                                   color_range=((0, 0, 118), (100, 100, 255)),  # dark to light red BGR tuples
-                                   area_color=(147, 20, 255))  # BGR pink
-    # The class has default values, so this is equivalent to:
-    # area_estimator = AreaEstimator()
+    # First we create an instance of AreaEstimator
+    area_estimator = AreaEstimator()
+    # The class has default values; this is equivalent to:
+    # area_estimator = AreaEstimator(filename='PartyRockFire.jpeg',  # name of the image in the directory
+    #                                feet_per_pixel=8188/215,  # the conversion ration from pixels to feet
+    #                                color_range=((0, 0, 118), (100, 100, 255)),  # dark to light red BGR tuples
+    #                                area_color=(147, 20, 255))  # BGR pink
 
-    # Calculate the area in square feet, then print the value rounded to 3 significant figures
+    # Now we calculate the area in square feet, then print the value rounded to 3 significant figures
     A = area_estimator.get_area()
     # You can also get the area in pixels
-    # A == A_px * area_estimator.px_size; True
     A_px = area_estimator.get_area(return_pixels=True)
     print(f'\nThe area of the Party Rock Fire is approximately {round(A, -6)} square feet (or {A_px} pixels)')
 
