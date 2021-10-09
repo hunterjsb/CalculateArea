@@ -1,10 +1,24 @@
+__author__ = "Hunter Boyd"
+
 """The class and methods implemented in main.py"""
 import numpy as np
 import cv2 as cv
 
 
 class AreaEstimator:
-    """A class that can estimate the area of contiguous shapes based on a colored outline"""
+    """
+    A class that can estimate the area of contiguous shapes based on a colored outline.
+    It also provides a visual representation of the estimated area.
+
+    AreaEstimator has four inputs, all have a default for Project 1:
+
+    Parameters:
+    -----------
+        :param filename: name and filepath of the image file to load
+        :param feet_per_pixel: the ratio of feet to pixels
+        :param color_range: the minimum and maximum BGR colors that will be picked up by cv.inRange
+        :param area_color: the color used to fill in the estimated area - not related to calculation
+    """
 
     def __init__(self,
                  filename='PartyRockFire.jpeg',
