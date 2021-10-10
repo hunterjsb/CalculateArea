@@ -40,8 +40,12 @@ Next, install the dependencies using pip:
 $ python -m pip install numpy
 $ python -m pip install opencv-python
 ```
+or using requirements.txt (installs above modules)
+```
+$ pythom -m pip install -r requirements.txt
+```
 
 Then run main.py to calculate the area.
 ```
-$ python main.py
+$ python main.pye
 ```
