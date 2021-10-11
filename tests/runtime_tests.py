@@ -24,43 +24,45 @@ def check_pixels(img, l, u, f):
     return img
 
 
-pbp_time = 0
-ga_time = 0  # get_area
-for run in range(100):
-    # create a random image
-    random_image = np.random.randint(255, size=(679, 860, 3), dtype=np.uint8)
-
-    # 100 tests, pixel-by-pixel
-    t = 0
-    for _ in range(10):
-        begin = time.time()
-        s = check_pixels(random_image, lower, upper, (0, 0, 0))
-        d = time.time() - begin
-        t += d
-    print(f'run {run}: average pbp run time: {t/10} s')
-    pbp_time += t/10
-
-    # 100 test, get_area
-    ae = AreaEstimator()
-    ae.img = random_image
-
-    t = 0
-    for _ in range(10):
-        begin = time.time()
-        ae.get_area()
-        d = time.time() - begin
-        t += d
-    print(f'run {run}: average get_area run time: {t/10} s')
-    ga_time += t/10
-print(f'pixel by pixel: {pbp_time/100}\nget_area {ga_time/100}')
-print(f'get_area is {ga_time/pbp_time}x faster')
+# pbp_time = 0
+# ga_time = 0  # get_area
+# for run in range(100):
+#     # create a random image
+#     random_image = np.random.randint(255, size=(679, 860, 3), dtype=np.uint8)
+#
+#     # 100 tests, pixel-by-pixel
+#     t = 0
+#     for _ in range(10):
+#         begin = time.time()
+#         s = check_pixels(random_image, lower, upper, (0, 0, 0))
+#         d = time.time() - begin
+#         t += d
+#     print(f'run {run}: average pbp run time: {t/10} s')
+#     pbp_time += t/10
+#
+#     # 100 test, get_area
+#     ae = AreaEstimator()
+#     ae.img = random_image
+#
+#     t = 0
+#     for _ in range(10):
+#         begin = time.time()
+#         ae.get_area()
+#         d = time.time() - begin
+#         t += d
+#     print(f'run {run}: average get_area run time: {t/10} s')
+#     ga_time += t/10
+# print(f'pixel by pixel: {pbp_time/100}\nget_area {ga_time/100}')
+# print(f'get_area is {ga_time/pbp_time}x faster')
 
 # get the mask of PartyRockFire
-# s = check_pixels(cv.imread('PartyRockFire.jpeg'),
-#                  np.array((0, 0, 118), dtype=np.uint8),
-#                  np.array((100, 100, 255), dtype=np.uint8),
-#                  (0, 0, 0))
-#
-# cv.imshow('selected pixels', s)
-# cv.waitKey(0)
-# cv.destroyAllWindows()
+cv.waitKey(0)
+cv.destroyAllWindows()
+s = check_pixels(cv.imread('../PartyRockFire.jpeg'),
+                 np.array((0, 0, 118), dtype=np.uint8),
+                 np.array((100, 100, 255), dtype=np.uint8),
+                 (0, 0, 0))
+
+cv.imshow('selected pixels', s)
+cv.waitKey(0)
+cv.destroyAllWindows()

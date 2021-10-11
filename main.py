@@ -1,13 +1,14 @@
 __author__ = "Hunter Boyd"
 __email__ = "hjboyd@email.sc.edu"
 __version__ = 1.0
+__date__ = "10/10/2021"
 
 """
 main.py is the implementation of my submission for CSCI 550 project 1.
 All of the methods used to calculate the area, along with explanations, are in calculatearea.py.
 Both calculatearea.py and PartyRockFire.jpeg must be in the same directory as this file.
 This file provides a brief overview of the functions I created in AreaEstimator in order to estimate and
-visualize the area of contiguous, non-polygonal shapes.
+visualize the area of contiguous, non-branching shapes.
 
 This project depends on numpy and opencv-python, which can be installed via pip.
 A README has been included with some basic setup instructions.
