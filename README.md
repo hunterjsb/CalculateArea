@@ -47,5 +47,5 @@ $ pythom -m pip install -r requirements.txt
 
 Then run main.py to calculate the area.
 ```
-$ python main.pye
+$ python main.py
 ```
