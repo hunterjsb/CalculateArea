@@ -1,5 +1,5 @@
 __author__ = "Hunter Boyd"
-__email__ = "hjboyd@email.sc.edu"
+__email__ = "hunterjsb@gmail.com"
 __version__ = 1.0
 __date__ = "10/10/2021"
 
